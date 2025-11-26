@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install ref-builder
+        run: uv tool install ref-builder
+
+      - name: Determine next version
+        id: version
+        run: |
+          latest_tag=$(git tag --sort=-v:refname | head -n 1)
+          if [ -z "$latest_tag" ]; then
+            next_version="0.1.0"
+          else
+            IFS='.' read -r major minor patch <<< "${latest_tag#v}"
+            next_version="$major.$minor.$((patch + 1))"
+          fi
+          echo "version=$next_version" >> $GITHUB_OUTPUT
+          echo "Next version: $next_version"
+
+      - name: Build Virtool release
+        run: |
+          uv tool run ref-builder build virtool \
+            -V ${{ steps.version.outputs.version }} \
+            -o plant-viruses-ref-${{ steps.version.outputs.version }}-virtool.json
+          gzip plant-viruses-ref-${{ steps.version.outputs.version }}-virtool.json
+
+      - name: Build FASTA release
+        run: |
+          uv tool run ref-builder build fasta \
+            -o plant-viruses-ref-${{ steps.version.outputs.version }}.fa
+          gzip plant-viruses-ref-${{ steps.version.outputs.version }}.fa
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v${{ steps.version.outputs.version }} \
+            --title "v${{ steps.version.outputs.version }}" \
+            --generate-notes \
+            plant-viruses-ref-${{ steps.version.outputs.version }}-virtool.json.gz \
+            plant-viruses-ref-${{ steps.version.outputs.version }}.fa.gz \
+            plant-viruses-ref-${{ steps.version.outputs.version }}.csv
