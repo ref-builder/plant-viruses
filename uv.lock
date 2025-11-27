@@ -107,17 +107,6 @@ wheels = [
 ]
 
 [[package]]
-name = "clean"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "ref-builder" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "ref-builder", specifier = ">=0.64.0" }]
-
-[[package]]
 name = "click"
 version = "8.3.1"
 source = { registry = "https://pypi.org/simple" }
@@ -257,6 +246,17 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/63/b8/718eecf0bb7e9d64e4956afaafd23db9f04c776d445f59fe94f54bdae8f0/orjson-3.11.4-cp314-cp314-win_amd64.whl", hash = "sha256:0a54d6635fa3aaa438ae32e8570b9f0de36f3f6562c308d2a2a452e8b0592db1", size = 131310, upload-time = "2025-10-24T15:50:14.46Z" },
     { url = "https://files.pythonhosted.org/packages/1a/bf/def5e25d4d8bfce296a9a7c8248109bf58622c21618b590678f945a2c59c/orjson-3.11.4-cp314-cp314-win_arm64.whl", hash = "sha256:78b999999039db3cf58f6d230f524f04f75f129ba3d1ca2ed121f8657e575d3d", size = 126151, upload-time = "2025-10-24T15:50:15.878Z" },
 ]
+
+[[package]]
+name = "plant-viruses"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "ref-builder" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "ref-builder", specifier = ">=0.64.0" }]
 
 [[package]]
 name = "platformdirs"

@@ -18,9 +18,6 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
 
-      - name: Install ref-builder
-        run: uv tool install ref-builder
-
       - name: Determine next version
         id: version
         run: |
@@ -36,14 +33,14 @@ jobs:
 
       - name: Build Virtool release
         run: |
-          uv tool run ref-builder build virtool \
+          uv run ref-builder build virtool \
             -V ${{ steps.version.outputs.version }} \
             -o plant-viruses-ref-${{ steps.version.outputs.version }}-virtool.json
           gzip plant-viruses-ref-${{ steps.version.outputs.version }}-virtool.json
 
       - name: Build FASTA release
         run: |
-          uv tool run ref-builder build fasta \
+          uv run ref-builder build fasta \
             -o plant-viruses-ref-${{ steps.version.outputs.version }}.fa
           gzip plant-viruses-ref-${{ steps.version.outputs.version }}.fa
 
