@@ -358,7 +358,7 @@ wheels = [
 
 [[package]]
 name = "ref-builder"
-version = "0.64.0"
+version = "0.65.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "arrow" },
@@ -371,9 +371,9 @@ dependencies = [
     { name = "rich" },
     { name = "structlog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/8c/fd/bf1fc280488049c4ab974ca46312844de97e04b5c5fdad4a49ca83122abb/ref_builder-0.64.0.tar.gz", hash = "sha256:430ec15ff8ff8230bd82abed1d5c74767fb00ff208425508764d9aadecf240f0", size = 51217, upload-time = "2025-11-26T17:52:48.386Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/41/29/30ec93c6811206b116891995580ea6a9b3a5c0ae19d78b40cf023a962a76/ref_builder-0.65.1.tar.gz", hash = "sha256:6a9bd643835f2cef55d2090ac320589abe444f2a8cf36ad03bdff4007a277243", size = 51340, upload-time = "2025-11-27T00:16:54.077Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b6/65/a7290fbb83fd8e8cee397c75b8a023614ba9b5d922940a65ca5ee0b417b0/ref_builder-0.64.0-py3-none-any.whl", hash = "sha256:3aad9628a8406b0509b33e99d0acfa0b5f7270aa4688e18789e137a7ea6cdbd2", size = 71934, upload-time = "2025-11-26T17:52:47.064Z" },
+    { url = "https://files.pythonhosted.org/packages/dc/4f/15616fc297794ff98df971318ab64e1fdc64f571dfc5a4a8d894f69c7b3a/ref_builder-0.65.1-py3-none-any.whl", hash = "sha256:3cfcf004d4b12f21f149822a855b08d3b10f183c254f5d6b35a86b18ef5a6890", size = 72113, upload-time = "2025-11-27T00:16:56.326Z" },
 ]
 
 [[package]]
