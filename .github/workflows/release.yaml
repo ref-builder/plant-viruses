@@ -48,8 +48,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create v${{ steps.version.outputs.version }} \
-            --title "v${{ steps.version.outputs.version }}" \
+          gh release create ${{ steps.version.outputs.version }} \
+            --title "${{ steps.version.outputs.version }}" \
             --generate-notes \
             plant-viruses-ref-${{ steps.version.outputs.version }}-virtool.json.gz \
             plant-viruses-ref-${{ steps.version.outputs.version }}.fa.gz \
